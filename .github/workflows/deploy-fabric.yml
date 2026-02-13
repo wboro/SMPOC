@@ -19,6 +19,7 @@ env:
 jobs:
   deploy:
     name: Deploy Fabric Items
+    environment: Prod
     runs-on: ubuntu-latest
 
     steps:
@@ -37,7 +38,6 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_SECRET }}
-          allow-no-subscriptions: true
 
       - name: Deploy to Fabric workspace
         run: |
