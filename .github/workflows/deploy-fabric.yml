@@ -1,0 +1,60 @@
+name: Deploy to Microsoft Fabric
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Fabric/**"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  FABRIC_WORKSPACE_ID: ${{ vars.FABRIC_WORKSPACE_ID }}
+
+
+jobs:
+  deploy:
+    name: Deploy Fabric Items
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install fabric-cicd azure-identity
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_SECRET }}
+          allow-no-subscriptions: true
+
+      - name: Deploy to Fabric workspace
+        run: |
+          python - <<'EOF'
+          from fabric_cicd import FabricWorkspace, publish_all_items
+          from azure.identity import DefaultAzureCredential
+          import os
+
+          workspace_id = os.environ["FABRIC_WORKSPACE_ID"]
+          credential = DefaultAzureCredential()
+
+          workspace = FabricWorkspace(
+              workspace_id=workspace_id,
+              repository_directory="Fabric",
+              item_type_in_scope=["Notebook"],
+              token_credential=credential,
+          )
+
+          publish_all_items(workspace)
+          EOF
