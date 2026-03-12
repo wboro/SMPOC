@@ -1,0 +1,4 @@
+find_replace:
+    - find_value: "connection string"
+      replace_value:
+          Prod: "new better production string"
