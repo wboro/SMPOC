@@ -14,6 +14,7 @@
 # Welcome to your new notebook
 # Type here in the cell editor to add code!
 # change 4+2
+# connection string
 
 # METADATA ********************
 
