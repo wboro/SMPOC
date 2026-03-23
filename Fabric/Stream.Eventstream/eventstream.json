@@ -1,0 +1,151 @@
+{
+  "sources": [
+    {
+      "id": "9b74e77a-8d36-4292-8ac8-b1f4b72f2aa8",
+      "name": "StockMarket",
+      "type": "SampleData",
+      "properties": {
+        "type": "StockMarket"
+      }
+    }
+  ],
+  "destinations": [
+    {
+      "id": "d3c18068-e0bb-420a-9afd-0cdfae83ad51",
+      "name": "Eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "50dfbf60-a293-bb67-4c92-58e5d9723cad",
+        "databaseName": "Eventhouse",
+        "tableName": "StockMarketEvents",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "streamstream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "streamstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "sector",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "securityType",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidPrice",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bidSize",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "askPrice",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "askSize",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSalePrice",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleSize",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "marketPercent",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "seq",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastUpdated",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lastSaleTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "08b83868-373a-4d19-a340-198d12c94ad6",
+      "name": "streamstream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "StockMarket"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.1"
+}

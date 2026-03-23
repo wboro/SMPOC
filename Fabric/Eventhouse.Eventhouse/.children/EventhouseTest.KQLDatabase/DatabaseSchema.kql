@@ -1,0 +1,5 @@
+// KQL script
+// Use management commands in this script to configure your database items, such as tables, functions, materialized views, and more.
+
+
+.create-merge table StockMarketEvents (['time']:string, symbol:string, sector:string, securityType:string, bidPrice:real, bidSize:long, askPrice:long, askSize:long, lastSalePrice:real, lastSaleSize:long, volume:long, marketPercent:real, seq:long, lastUpdated:long, lastSaleTime:long) 
