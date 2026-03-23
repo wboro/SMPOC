@@ -52,7 +52,7 @@ jobs:
           workspace = FabricWorkspace(
               workspace_id=workspace_id,
               repository_directory="Fabric",
-              item_type_in_scope=["Notebook"],
+              item_type_in_scope=["Notebook","Eventhouse","KQLDatabase","Eventstream"],
               environment="Prod",
               token_credential=credential,
           )
