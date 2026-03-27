@@ -11,18 +11,8 @@
 
 # CELL ********************
 
-x = 5
+x = 6
 # connection string
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 
 # METADATA ********************
 
